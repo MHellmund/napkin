@@ -1,7 +1,8 @@
 \chapter{Eigen-things}
 This chapter will develop the theory of eigenvalues and eigenvectors,
-the so-called ``Jordan canonical form'',
-and from it the characteristic polynomial.
+the so-called ``Jordan canonical form''.
+(Later on we will use it to
+define the characteristic polynomial.)
 
 \section{Why you should care}
 We know that a square matrix $T$ is really just
@@ -10,7 +11,7 @@ What's the simplest type of linear map?
 It would just be multiplication by some scalar $\lambda$,
 which would have associated matrix (in any basis!)
 \[
-	T = 
+	T =
 	\begin{bmatrix}
 		\lambda & 0 & \dots & 0 \\
 		0 & \lambda & \dots & 0 \\
@@ -127,9 +128,10 @@ Unfortunately, it's not exactly true that eigenvalues always exist.
 	other than the trivial $v=0$.
 \end{example}
 
-However, it is true if we replace $k$ with an algebraically closed field
-\footnote{A field is \vocab{algebraically closed} if all its
-polynomials have roots, the archetypal example being $\CC$.}
+However, it is true if we replace $k$ with an
+algebraically closed field\footnote{A field is \vocab{algebraically closed}
+	if all its polynomials have roots,
+	the archetypal example being $\CC$.}.
 \begin{theorem}[Eigenvalues always exist over algebraically closed fields]
 	Suppose $k$ is an \emph{algebraically closed} field.
 	Let $V$ be a finite dimensional $k$-vector space.
@@ -150,7 +152,7 @@ polynomials have roots, the archetypal example being $\CC$.}
 	Let $n = \dim V < \infty$ and fix any nonzero vector $v \in V$,
 	and consider vectors $v$, $T(v)$, \dots, $T^n (v)$.
 	There are $n+1$ of them,
-	so they must be linearly dependent for dimension reasons;
+	so they can't be linearly independent for dimension reasons;
 	thus there is a nonzero polynomial $P$ such that $P(T)$
 	is zero when applied to $v$.
 	WLOG suppose $P$ is a monic polynomial,
@@ -158,8 +160,8 @@ polynomials have roots, the archetypal example being $\CC$.}
 	Then we get
 	\[ 0 = (T - r_1 \id) \circ (T - r_2 \id) \circ \dots
 		\circ (T - r_m \id)(v) \]
-	which means at least one of $T - r_i \id$ is not injective,
-	i.e.\ has a nontrivial kernel,
+	(where $\id$ is the identity matrix).  This means at least one of
+	$T - r_i \id$ is not injective, i.e.\ has a nontrivial kernel,
 	which is the same as an eigenvector.
 \end{proof}
 So in general we like to consider algebraically closed fields.
@@ -238,33 +240,31 @@ I'll explain later how to interpret the $1$'s,
 when I make up the word \emph{descending staircase}.
 For now, you should note that even if $\dim J_i \ge 2$,
 we still have a basis element
-which is an eigenvector with element $\lambda_i$.
+which is an eigenvector with eigenvalue $\lambda_i$.
 
 \begin{example}
 	[A concrete example of Jordan form]
 	Let $T : k^6 \to k^6$ and suppose $T$ is given by the matrix
 	\[
 		T = \begin{bmatrix}
-			3 & 0 & 0 & 0 & 0 & 0 \\
-			0 & 7 & 0 & 0 & 0 & 0 \\
-			0 & 0 & 2 & 1 & 0 & 0 \\
-			0 & 0 & 0 & 2 & 0 & 0 \\
-			0 & 0 & 0 & 0 & 5 & 0 \\
+			5 & 0 & 0 & 0 & 0 & 0 \\
+			0 & 2 & 1 & 0 & 0 & 0 \\
+			0 & 0 & 2 & 0 & 0 & 0 \\
+			0 & 0 & 0 & 7 & 0 & 0 \\
+			0 & 0 & 0 & 0 & 3 & 0 \\
 			0 & 0 & 0 & 0 & 0 & 3 \\
 		\end{bmatrix}.
 	\]
 	Reading the matrix, we can compute all the eigenvectors and eigenvalues:
-	they are
+	for any constants $a, b \in k$ we have
 	\begin{align*}
-		T(e_1) &= 3e_1 \\
-		T(e_2) &= 7e_2 \\
-		T(e_3) &= 2e_3 \\
-		T(e_5) &= 5e_5 \\
-		T(e_6) &= 3e_6.
+		T(a \cdot e_1) &= 5a \cdot e_1 \\
+		T(a \cdot e_2) &= 2a \cdot e_2 \\
+		T(a \cdot e_4) &= 7a \cdot e_4 \\
+		T(a \cdot e_5 + b \cdot e_6) &= 3\left[ a \cdot e_5 + b \cdot e_6 \right].
 	\end{align*}
-	The element $e_4$, on the other hand,
-	is not an eigenvalue.
-	For $T(e_4) = e_3 + 2e_4$.
+	The element $e_3$ on the other hand,
+	is not an eigenvector since $T(e_3) = e_2 + 2e_3$.
 \end{example}
 
 %Here's the idea behind the proof.
@@ -294,7 +294,7 @@ Bear with me for a moment.  First, define:
 What's an example of a nilpotent map?
 \begin{example}
 	[The ``descending staircase'']
-	Let $V = k^3$ have basis $e_1$, $e_2$, $e_3$.
+        Let $V = k^{\oplus 3}$ have basis $e_1$, $e_2$, $e_3$.
 	Then the map $T$ which sends
 	\[ e_3 \mapsto e_2 \mapsto e_1 \mapsto 0 \]
 	is nilpotent, since $T(e_1) = T^2(e_2) = T^3(e_3) = 0$,
@@ -317,7 +317,7 @@ As another example, we can have multiple such staircases.
 \begin{example}
 	[Double staircase]
 	Let $V = k^{\oplus 5}$ have basis $e_1$, $e_2$, $e_3$, $e_4$, $e_5$.
-	Then the map 
+	Then the map
 	\[ e_3 \mapsto e_2 \mapsto e_1 \mapsto 0 \text{ and }
 		e_5 \mapsto e_4 \mapsto 0 \]
 	is nilpotent.
@@ -396,7 +396,7 @@ Now I'm going to be cheap, and define:
 	where both $W_1$ and $W_2$ are nontrivial $T$-invariant spaces.
 \end{definition}
 Picture of a \emph{decomposable} map:
-\[ 
+\[
 	\begin{bmatrix}
 		\multicolumn{2}{c|}{\multirow{2}{*}{$W_1$}} & 0 & 0 & 0  \\
 		\multicolumn{2}{c|}{} & 0 & 0 & 0 \\ \hline
@@ -432,7 +432,7 @@ By \Cref{prob:endomorphism_eventual_lemma}, we have
 \[ V_1 = \ker S^N \oplus \img S^N \]
 for some $N$.
 But we assumed $T$ was indecomposable,
-so this can only happen if $\img S^N = \{0\}$ and $\ker S^N = V$
+so this can only happen if $\img S^N = \{0\}$ and $\ker S^N = V_1$
 (since $\ker S^N$ contains our eigenvector).
 Hence $S$ is nilpotent, so it's a collection of staircases.
 In fact, since $T$ is indecomposable, there is only one staircase.

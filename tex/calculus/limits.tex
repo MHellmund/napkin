@@ -277,14 +277,14 @@ The proof here readily adapts by shifting.
 \end{theorem}
 
 \begin{example}
-	[Silly example of monotonocity]
+	[Silly example of monotonicity]
 	Consider the sequence defined by
 	\begin{align*}
 		a_1 &= 1.2 \\
 		a_2 &= 1.24 \\
-		a_3 &= 1.1248 \\
-		a_4 &= 1.124816 \\
-		a_5 &= 1.12481632 \\
+		a_3 &= 1.248 \\
+		a_4 &= 1.24816 \\
+		a_5 &= 1.2481632 \\
 		&\vdotswithin=
 	\end{align*}
 	and so on, where in general we stuck
@@ -317,7 +317,7 @@ Don't worry, we're about to define those in just a moment.
 Here is one other great use of monotonic sequences.
 \begin{definition}
 	Let $a_1$, $a_2$, \dots be a sequence
-	(not necessarily monotonic) which is bounded above.
+	(not necessarily monotonic) which is bounded below.
 	We define
 	\[
 		\limsup_{n \to \infty} a_n
@@ -328,14 +328,16 @@ Here is one other great use of monotonic sequences.
 	We set $\limsup_{n \to \infty} a_n$ to be $+\infty$
 	if $a_n$ is not bounded above.
 
-	The \vocab{limit infimum} is defined similarly,
-	with $\liminf_{n \to \infty} a_n = -\infty$
+	If $a_n$ is bounded above,
+	the \vocab{limit infimum} $\liminf_{n \to \infty} a_n$
+	is defined similarly.
+	In particular, $\liminf_{n \to \infty} a_n = -\infty$
 	if $a_n$ is not bounded below.
 \end{definition}
 \begin{exercise}
-	Show that this definition makes sense,
-	by checking that the supremums are non-decreasing,
-	and bounded above.
+	Show that these definitions make sense,
+	by checking that the supremums are non-increasing,
+	and bounded below.
 \end{exercise}
 We can think of $\limsup_n a_n$ as
 ``supremum, but allowing finitely many terms to be discarded''.
@@ -459,7 +461,8 @@ in the following sense.
 
 	Conversely, if such $M$ exists then we have
 	$s_1 \le s_2 \le \dots < M$.
-	Then we contend the sequence $s_n$ converges to $M = \sup_n s_n$.
+	Then we contend the sequence $s_n$ converges to
+	$L \defeq \sup_n s_n < \infty$.
 	(If you read the proof that completeness implies Cauchy,
 	the picture is nearly the same here, but simpler.)
 	\begin{center}
@@ -469,8 +472,8 @@ in the following sense.
 		label("$\mathbb R$", (8,0), dir(-90));
 		draw( (3.1,1)--(3.1,-1), red );
 		draw( (2.4,1.5)--(2.4,-1.5), deepgreen );
-		label("$M$", (3.1,-1), dir(-45), red);
-		label("$M-\varepsilon$", (2.4,1.5), dir(90), deepgreen);
+		label("$L$", (3.1,-1), dir(-45), red);
+		label("$L-\varepsilon$", (2.4,1.5), dir(90), deepgreen);
 		dot("$s_1$", (-5, 0), dir(-90), blue);
 		dot("$s_2$", (-4, 0), dir(-90), blue);
 		dot("$s_3$", (-1.7, 0), dir(-90), blue);
@@ -486,9 +489,9 @@ in the following sense.
 	\end{center}
 
 	Indeed, this means for any $\eps$ there
-	are infinitely many terms of the sequence exceeding $M-\eps$;
-	but since the sequence is monotic, once $s_n \ge M-\eps$
-	for some $N$ then $s_{n'} \ge M-\eps$ for all $n \ge n'$.
+	are infinitely many terms of the sequence exceeding $L-\eps$;
+	but since the sequence is monotonic, once $s_n \ge L-\eps$
+	then $s_{n'} \ge L-\eps$ for all $n' \ge n$.
 	This implies convergence.
 \end{proof}
 
@@ -540,7 +543,7 @@ Then, rearrangement works great.
 	Suppose $\sum_k a_k$ converges to $L$,
 	and $b_n$ is a rearrangement.
 	Let $\eps > 0$.
-	We will show that sum partial sums of $b_n$
+	We will show that the partial sums of $b_n$
 	are eventually within $\eps$ of $L$.
 
 	The hypothesis means that there is a large $N$ in terms of $\eps$
@@ -653,7 +656,7 @@ we \emph{deliberately} require that $x \ne p$.
 
 	As $f(0) = 1$, this function is also discontinuous at $x = 0$.
 	However, if we change the definition so that $f(0) = 0$ instead,
-	then $f$ becomes continuous.
+	then $f$ becomes continuous at $0$.
 \end{example}
 
 \begin{example}
@@ -736,7 +739,7 @@ So these examples can be more easily written down.
 	\[ \lim_{x \to \infty} \frac 1x = 0. \]
 	I'll even write out the proof:
 	for any $\eps > 0$, if $x > 1/\eps$
-	then $\left\lvert \frac 1x - 0 \right\rvert < \frac1\eps$.
+	then $\left\lvert \frac 1x - 0 \right\rvert < \eps$.
 \end{example}
 
 There are no surprises with arithmetic:

@@ -34,7 +34,7 @@ Or do they?
 
 Let's try and figure out exactly what's happening.
 Let $\alpha$ be any complex number.
-We define the \vocab{minimal polynomial} of $\alpha$ over $\QQ$ to be the polynomial such that
+We define a \vocab{minimal polynomial} of $\alpha$ over $\QQ$ to be a polynomial such that
 \begin{itemize}
 	\item $P(x)$ has rational coefficients, and leading coefficient $1$,
 	\item $P(\alpha) = 0$.
@@ -62,8 +62,16 @@ Notice that by plugging in $x = \alpha$, we find that $R(\alpha) = 0$.
 But $\deg R < \deg P$, and $P(x)$ was supposed to be the minimal polynomial.
 That's impossible!
 
+It follows from this and the monotonicity of the minimal polynomial
+that it is unique (when it exists), so actually it is better to refer to
+\emph{the} minimal polynomial.
+\begin{exercise}
+	Can you find an element in $\CC$
+	that has no minimal polynomial?
+\end{exercise}
+
 Let's look at a more concrete example.
-Consider $A(x) = x^3-3x^2-2x+2$ from the beginning. 
+Consider $A(x) = x^3-3x^2-2x+2$ from the beginning.
 The minimal polynomial of $2 + \sqrt 2$ is $P(x) = x^2 - 4x + 2$ (why?).
 Now we know that if $2 + \sqrt 2$ is a root, then $A(x)$ is divisible by $P(x)$.
 And that's how we know that if $2 + \sqrt 2$ is a root of $A$, then $2 - \sqrt 2$ must be a root too.
@@ -91,7 +99,7 @@ First, let's give names to the new numbers we've discussed above.
 	The set of algebraic numbers is denoted $\ol\QQ$.
 \end{definition}
 \begin{remark}
-	One can equally well say algebraic numbers are those of which 
+	One can equally well say algebraic numbers are those that
 	are roots of some polynomial with coefficients in $\ZZ$ (rather than $\QQ$),
 	since any polynomial in $\QQ[x]$ can be scaled to one in $\ZZ[x]$.
 \end{remark}
@@ -149,8 +157,8 @@ The first we prove now, since it's very easy:
 The other is that:
 \begin{proposition}
 	[$\ol{\ZZ}$ is a ring and $\ol{\QQ}$ is a field]
-	The algebraic integers $\ol{\ZZ}$ form a ring;
-	The algebraic numbers $\ol{\QQ}$ form a ring.
+	The algebraic integers $\ol{\ZZ}$ form a ring.
+	The algebraic numbers $\ol{\QQ}$ form a field.
 \end{proposition}
 We could prove this now if we wanted to,
 but the results in the next chapter will more or less
@@ -259,6 +267,7 @@ makes it clear why this theorem should not be too surprising.
 \end{sproblem}
 
 \begin{dproblem}
+	\gim
 	Which rational numbers $q$ satisfy $\cos(q\pi) \in \QQ$?
 	\begin{hint}
 		Only the obvious ones.
@@ -298,4 +307,8 @@ makes it clear why this theorem should not be too surprising.
 	\yod
 	Is there an algebraic integer with absolute value one
 	which is not a root of unity?
+\end{problem}
+
+\begin{problem}
+	Is the ring of algebraic integers Noetherian?
 \end{problem}

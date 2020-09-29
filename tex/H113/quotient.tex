@@ -123,6 +123,8 @@ We simply drop the ``bijection'' condition.
 	such that for any $g_1, g_2 \in G$ we have
 	\[ \phi(g_1 \star g_2) = \phi(g_1) \ast \phi(g_2). \]
 \end{definition}
+(Not to be confused with ``homeomorphism'' from
+last chapter: note the spelling.)
 
 \begin{example}
 	[Examples of homomorphisms]
@@ -443,12 +445,12 @@ The fact that $N$ came from a homomorphism meant we could pick any representativ
 $g_1$ and $g_2$ of the cosets we wanted, because they all had the same $\phi$-value.
 
 We want some conditions which force this to be true without referencing $\phi$ at all.
-Suppose $\phi : G \to K$ is a homomorphism of groups with $H = \ker\phi$.
+Suppose $\phi \colon G \to K$ is a homomorphism of groups with $H = \ker\phi$.
 Aside from the fact $H$ is a group, we can get an ``obvious'' property:
 \begin{ques}
 	Show that if $h \in H$, $g \in G$,
 	then $ghg\inv \in H$.
-	(Check $\phi(ghg\inv) = 1_H$.)
+	(Check $\phi(ghg\inv) = 1_K$.)
 \end{ques}
 \begin{example}[Example of a non-normal subgroup]
 	\label{ex:dihedral_normal_subgroup}
@@ -676,7 +678,7 @@ is an \emph{embedding} of $G$ into $H$.
 
 \begin{problem}
 	[PRIMES entrance exam, 2017]
-	\yod
+	\gim
 	Let $G$ be a group with presentation given by
 	\[ G = \left< a,b,c \mid
 		ab = c^2a^4, \; bc = ca^6, \; ac = ca^8, \;

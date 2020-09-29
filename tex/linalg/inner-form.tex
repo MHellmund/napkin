@@ -29,10 +29,11 @@ Some highlights of the chapter:
 
 Throughout this chapter, \emph{all vector spaces are over $\CC$ or $\RR$},
 unless otherwise specified.
-We'll generally prefer working over $\CC$ instead of $\RR$ since,
-like we saw in the chapter on spectral theory, $\CC$ is algebraically closed
-in a nice way that $\RR$ is not.
-Every real matrix can be thought of as a matrix with complex entries anyways.
+We'll generally prefer working over $\CC$ instead of $\RR$ since
+$\CC$ is algebraically closed
+(so, e.g.\ we have Jordan forms).
+Every real matrix can be thought of as a matrix
+with complex entries anyways.
 
 \section{The inner product}
 \prototype{Dot product in $\RR^n$.}
@@ -208,9 +209,10 @@ we can talk both about the norm and orthogonality.
 The inner form equips our vector space with a notion of distance, which we call the norm.
 \begin{definition}
 	Let $V$ be an inner product space.
-	The \vocab{norm} of $v \in V$ is defined by 
+	The \vocab{norm} of $v \in V$ is defined by
 	\[ \norm{v} = \sqrt{\left<v,v\right>}. \]
-	This definition makes sense because we assumed our form to be positive definite,
+	This definition makes sense because
+	we assumed our form to be positive definite,
 	so $\left< v,v\right>$ is a nonnegative real number.
 \end{definition}
 
@@ -296,7 +298,7 @@ this implies independence:
 	Consider a dependence
 	\[ a_1 v_1 + \dots + a_n v_n = 0 \]
 	for $a_i$ in $\RR$ or $\CC$.
-	Then \[ 0_V = \left< v_1, \sum a_i v_i \right> = a_1 \norm{v_1}^2. \]
+	Then \[ 0_V = \left< v_1, \sum a_i v_i \right> = \ol{a_1} \norm{v_1}^2. \]
 	Hence $a_1 = 0$, since we assumed $\norm{v_1} \neq 0$.
 	Similarly $a_2 = \dots = a_m = 0$.
 \end{proof}
@@ -385,7 +387,7 @@ Then consider the sequence
 	so you could skip this proof if you haven't read the chapter.
 	The sequence $v_i$ converges if and only if it is Cauchy,
 	meaning that when $i < j$,
-	\[ \norm{v_j - v_i}^2 = |c_i|^2 + \dots + |c_{j-1}|^2 \]
+	\[ \norm{v_j - v_i}^2 = |c_{i+1}|^2 + \dots + |c_j|^2 \]
 	tends to zero as $i$ and $j$ get large.
 	This is equivalent to the sequence
 	$s_n = |c_1|^2 + \dots + |c_n|^2$ being Cauchy.
@@ -393,13 +395,13 @@ Then consider the sequence
 	Since $\RR$ is complete, $s_n$ is Cauchy
 	if and only if it converges.
 	Since $s_n$ consists of nonnegative real numbers,
-	that is if and only if $s_n$ is bounded,
-	or $\sum_i \left\lvert c_i \right\rvert^2 < \infty$.
+	converges holds if and only if $s_n$ is bounded,
+	or equivalently if $\sum \left\lvert c_i \right\rvert^2 < \infty$.
 \end{proof}
 
 Thus, when we have a Hilbert space, we change our definition slightly:
 \begin{definition}
-	A \vocab{orthonormal basis} for a Hilbert space $V$
+	An \vocab{orthonormal basis} for a Hilbert space $V$
 	is a (possibly infinite) sequence $e_1$, $e_2$, \dots,
 	of vectors such that
 	\begin{itemize}
@@ -518,4 +520,16 @@ is exactly the one which ensures the infinite sum makes sense.
 	\[ \left< a, b\right> = \sum_i a_i b_i. \]
 	Is this a Hilbert space?
 	If so, identify a Hilbert basis.
+\end{problem}
+
+\begin{problem}
+	[Kuratowski embedding]
+	A \vocab{Banach space} is a normed vector space $V$,
+	such that the corresponding metric space is complete.
+	(So a Hilbert space is a special case of a Banach space.)
+
+	Let $(M,d)$ be any metric space.
+	Prove that there exists a Banach space $X$
+	and an injective function $f \colon M \injto X$
+	such that $d(x,y) = \norm{f(x)-f(y)}$ for any $x$ and $y$.
 \end{problem}

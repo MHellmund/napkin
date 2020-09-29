@@ -26,10 +26,8 @@ We can make all of this precise using the idea of a group action.
 	\end{itemize}
 \end{definition}
 
-Here are some more examples of group actions.
 \begin{example}[Examples of group actions]
 	Let $G=(G,\star)$ be a group.
-	Here are some examples of group actions.
 	\begin{enumerate}[(a)]
 		\ii The group $\Zc 4$ can act on the set of ways to color a $7 \times 7$
 		board either yellow or green.
@@ -300,14 +298,15 @@ A trivial result that gets used enough that I should explicitly call it out:
 
 \begin{problem}
 	\gim
-	Prove Burnside's lemma. 
+	Prove Burnside's lemma.
 	\begin{hint}
 		Double-count pairs $(g,x)$ with $g \cdot x = x$.
 	\end{hint}
 \end{problem}
 
-\begin{problem}
+\begin{sproblem}
 	[The ``class equation'']
+	\label{prob:class_eq}
 	Let $G$ be a finite group.
 	We define the \vocab{centralizer} $C_G(g) = \{ x \in G \mid xg = gx \}$
 	for each $g \in G$.
@@ -317,7 +316,7 @@ A trivial result that gets used enough that I should explicitly call it out:
 	where $S \subseteq G$ is defined as follows:
 	for each conjugacy class $C \subseteq G$ with $|C| > 1$,
 	we pick a representative of $C$ and add it to $S$.
-\end{problem}
+\end{sproblem}
 
 \begin{dproblem}
 	[Classical]

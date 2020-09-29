@@ -58,7 +58,7 @@ the only good way (perhaps not even the most natural one)
 of motivating what is to follow.
 
 \section{Definition and examples of rings}
-\prototype{$\ZZ$ all the way! Also $R[x]$ and various fields.}
+\prototype{$\ZZ$ all the way! Also $R[x]$ and various fields (next section).}
 
 Well, I guess I'll define a ring\footnote{Or,
 	according to some authors, a ``ring with identity'';
@@ -77,7 +77,7 @@ Well, I guess I'll define a ring\footnote{Or,
 	The ring $R$ is \vocab{commutative} if $\times$ is commutative.
 \end{definition}
 \begin{abuse}
-	As usual, we will abbreviate $(R, +, \times)$ to just $R$.
+	As usual, we will abbreviate $(R, +, \times)$ to $R$.
 \end{abuse}
 \begin{abuse}
 	For simplicity, assume all rings are commutative
@@ -88,7 +88,7 @@ Well, I guess I'll define a ring\footnote{Or,
 
 These definitions are just here for completeness.
 The examples are much more important.
-\begin{example}[Typical rings and fields]
+\begin{example}[Typical rings]
 	\listhack
 	\begin{enumerate}[(a)]
 		\ii The sets $\ZZ$, $\QQ$, $\RR$ and $\CC$ are all rings
@@ -148,9 +148,10 @@ Here are some more examples of rings.
 \begin{remark}
 	[Digression on division]
 	Happily, polynomial division also does what we expect:
-	if $p(x) \in R[x]$ and $p(a) = 0$,
+	if $p \in R[x]$ is a polynomial, and $p(a) = 0$,
 	then $(x-a)q(x) = p(x)$ for some polynomial $q$.
-	Proof: just do polynomial long division.
+	Proof: do polynomial long division.
+
 	With that, note the caveat that
 	\[ x^2-1 \equiv (x-1)(x+1) \pmod 8 \]
 	has \emph{four} roots $1$, $3$, $5$, $7$ in $\Zc8$.
@@ -177,20 +178,95 @@ Here are some more examples of rings.
 \end{example}
 \begin{abuse}
 	[Liberal use of adjoinment]
-	Extremely careful readers will detect some abuse in notation here.
-	$\ZZ[i]$ should officially be ``integer-coefficient polynomials in $i$''.
-	However, as $i^2=-1$, a polynomial in $i$ is just the same as
-	a Gaussian integer. So not a big deal.
+	Careful readers will detect some abuse in notation here.
+	$\ZZ[i]$ should officially be
+	``integer-coefficient polynomials in a variable $i$''.
+	However, it is understood from context that $i^2=-1$;
+	and a polynomial in $i = \sqrt{-1}$ ``is'' a Gaussian integer.
 \end{abuse}
 \begin{example}
 	[Cube root of $2$]
-	As another example:
+	As another example (using the same abuse of notation):
 	\[ \ZZ[\sqrt[3]{2}] = \left\{ a + b\sqrt[3]{2} + c\sqrt[3]4
 		\mid a,b,c \in \ZZ \right\}. \]
 \end{example}
 
+\section{Fields}
+\prototype{$\QQ$ is a field, but $\ZZ$ is not.}
+
+Although we won't need to know what a field is until next chapter,
+they're so convenient for examples I will go ahead and introduce them now.
+
+As you might already know, if the multiplication is invertible,
+then we call the ring a field.
+To be explicit, let me write the relevant definitions.
+
+\begin{definition}
+	\label{def:unit}
+	A \vocab{unit} of a ring $R$
+	is an element $u \in R$ which is invertible:
+	for some $x \in R$ we have $ux = 1_R$.
+\end{definition}
+
+\begin{example}
+	[Examples of units]
+	\listhack
+	\begin{enumerate}[(a)]
+	\ii The units of $\ZZ$ are $\pm 1$,
+	because these are the only things which ``divide $1$''
+	(which is the reason for the name ``unit'').
+	\ii On the other hand, in $\QQ$ everything is a unit (except $0$).
+	For example, $\frac 35$ is a unit since
+	$\frac 35 \cdot \frac 53 = 1$.
+	\ii The Gaussian integers $\ZZ[i]$ have four units:
+	$\pm 1$ and $\pm i$.
+	\end{enumerate}
+\end{example}
+
+\begin{definition}
+	A nontrivial (commutative) ring is a \vocab{field}
+	when all its nonzero elements are units.
+\end{definition}
+
+Colloquially, we say that
+\begin{moral}
+	A field is a structure where you can add, subtract, multiply, and divide.
+\end{moral}
+Depending on context, they are often denoted
+either $k$, $K$, $F$.
+
+\begin{example}
+	[First examples of fields]
+	\listhack
+	\begin{enumerate}[(a)]
+		\ii $\QQ$, $\RR$, $\CC$ are fields,
+		since the notion $\frac 1c$ makes sense in them.
+		\ii If $p$ is a prime, then $\Zc p$ is a field,
+		which we denote will usually denote by $\FF_p$.
+	\end{enumerate}
+	The trivial ring $0$ is \emph{not} considered a field,
+	since we require fields to be nontrivial.
+\end{example}
+
+%\begin{remark}
+%	You might say at this point that ``fields are nicer than rings'',
+%	but as you'll see in this chapter, the conditions for
+%	being a field are somehow ``too strong''.
+%	To give an example of what I mean:
+%	if you try to think about the concept of ``divisibility''
+%	in $\ZZ$, you've stepped into the vast and bizarre realm of
+%	number theory.  Try to do the same thing in $\QQ$ and you get nothing:
+%	any nonzero $a$ ``divides'' any nonzero $b$
+%	because $b = a \cdot \frac ba$.
+%
+%	I know at least one person who instead
+%	thinks of this as an argument for why people
+%	shouldn't care about number theory
+%	(studying chaos rather than order).
+%\end{remark}
+
 \section{Homomorphisms}
-\prototype{$5\ZZ$ is an ideal of $\ZZ$.}
+\prototype{$\ZZ \to \Zc5$ by modding out by $5$.}
 This section is going to go briskly --
 it's the obvious generalization of all the stuff
 we did with quotient groups.\footnote{I once found an
@@ -288,12 +364,13 @@ That is,
 \end{definition}
 
 Note that in the second condition, $r$ need not be in $I$!
-So this is stronger than just saying $I$ is closed under multiplication.
+So this is stronger than merely saying $I$ is closed under multiplication.
 \begin{remark}
 	If $R$ is not commutative, we also need the condition $xr \in I$.
 	That is, the ideal is \emph{two-sided}: it absorbs multiplication
 	from both the left and the right.
-	But since most of our rings are commutative we needn't worry with this distinction.
+	But since rings in Napkin are commutative
+	we needn't worry with this distinction.
 \end{remark}
 
 \begin{example}
@@ -306,14 +383,12 @@ So this is stronger than just saying $I$ is closed under multiplication.
 	given $15 \in I$, $999 \in \ZZ$, we get $15 \cdot 999 \in I$.
 \end{example}
 
-\begin{proposition}
-	[Proper ideal $\iff$ no units]
-	Let $R$ be a ring and $I \subseteq R$ an ideal.
-	Then $I$ is proper if and only if it contains no units of $R$.
-\end{proposition}
-\begin{ques}
-	Prove this.
-\end{ques}
+\begin{exercise}
+	[Mandatory: fields have two ideals]
+	If $K$ is a field, show that $K$ has exactly two ideals.
+	What are they?
+	\label{exer:field_ideal}
+\end{exercise}
 
 Now we claim that these conditions are sufficient.
 More explicitly,
@@ -331,11 +406,12 @@ More explicitly,
 	\[ S = \left\{ r + I \mid r \in R \right\}. \]
 	These are the equivalence where we say $r_1 \sim r_2$ if $r_1 - r_2 \in I$
 	(think of this as taking ``mod $I$'').
-	To see that these form a ring, we just have to check that the addition
+	To see that these form a ring, we have to check that the addition
 	and multiplication we put on them is well-defined.
 	Specifically, we want to check that if $r_1 \sim s_1$ and $r_2 \sim s_2$,
 	then $r_1 + r_2 \sim s_1 + s_2$ and $r_1r_2 \sim s_1s_2$.
-	We actually already did the first part -- just think of $R$ and $S$ as abelian
+	We actually already did the first part
+	-- just think of $R$ and $S$ as abelian
 	groups, forgetting for the moment that we can multiply.
 	The multiplication is more interesting.
 	\begin{exercise}
@@ -371,14 +447,49 @@ For example, modding out by $5\ZZ$ means that we consider
 all elements in $\ZZ$ divisible by $5$ to be zero.
 This gives you the usual modular arithmetic!
 
+\begin{exercise}
+	Earlier, we wrote $\ZZ[i]$ for the Gaussian integers,
+	which was a slight abuse of notation.
+	Convince yourself that this ring
+	could instead be written as $\ZZ[x] / (x^2+1)$,
+	if we wanted to be perfectly formal.
+	(We will stick with $\ZZ[i]$ though --- it's more natural.)
+
+	Figure out the analogous formalization of $\ZZ[\sqrt[3]{2}]$.
+\end{exercise}
+
 \section{Generating ideals}
 \prototype{In $\ZZ$, the ideals are all of the form $(n)$.}
 
 Let's give you some practice with ideals.
 
+An important piece of intuition is that once an ideal
+contains a unit, it contains $1$, and
+thus must contain the entire ring.
+That's why the notion of ``proper ideal''
+is useful language.
+To expand on that:
+\begin{proposition}
+	[Proper ideal $\iff$ no units]
+	Let $R$ be a ring and $I \subseteq R$ an ideal.
+	Then $I$ is proper (i.e.\ $I \ne R$)
+	if and only if it contains no units of $R$.
+\end{proposition}
+\begin{proof}
+	Suppose $I$ contains a unit $u$, i.e.\ an element $u$
+	with an inverse $u\inv$.
+	Then it contains $u \cdot u\inv = 1$, and thus $I = R$.
+	Conversely, if $I$ contains no units, it is obviously proper.
+\end{proof}
+As a consequence, if $K$ is a field,
+then its only ideals are $(0)$ and $K$
+(this was \Cref{exer:field_ideal}).
+So for our practice purposes, we'll be working with rings that aren't fields.
+
+First practice: $\ZZ$.
 \begin{exercise}
 	Show that the only ideals of $\ZZ$ are precisely those
-	sets of the form $n\ZZ$, where $n$ is an integer.
+	sets of the form $n\ZZ$, where $n$ is a nonnegative integer.
 \end{exercise}
 
 Thus, while ideals of fields are not terribly interesting,
@@ -413,7 +524,7 @@ In particular, if $I = (x)$ then $I$ consists of exactly the
 \begin{example}[Examples of generated ideals]
 	\listhack
 	\begin{enumerate}[(a)]
-		\ii As $(n) = n\ZZ$ for all $ \in \ZZ$,
+		\ii As $(n) = n\ZZ$ for all $n \in \ZZ$,
 		every ideal in $\ZZ$ is of the form $(n)$.
 		\ii In $\ZZ[i]$, we have
 		$(5) = \left\{ 5a + 5b i \mid a,b \in \ZZ \right\}$.
@@ -476,7 +587,7 @@ like $(10,15) \subseteq \ZZ$?
 Well, we have by definition that $(10,15)$ is given as a set by
 \[ (10,15) \defeq \left\{ 10x + 15y \mid x,y \in \ZZ \right\}.  \]
 If you're good at number theory you'll instantly
-recognize that this as just $5\ZZ = (5)$.
+recognize that this as $5\ZZ = (5)$.
 Surprise! In $\ZZ$, the ideal $(a,b)$ is exactly $\gcd(a,b) \ZZ$.
 And that's exactly the reason you often see the GCD of two numbers denoted $(a,b)$.
 
@@ -486,10 +597,11 @@ But the same is not true in more general rings.
 \begin{example}
 	[A non-principal ideal]
 	In $\ZZ[x]$, $I = (x,2015)$ is \emph{not} a principal ideal.
+
 	For if $I = (f)$ for some polynomial $f \in I$
 	then $f$ divides $x$ and $2015$.
 	This can only occur if $f = \pm 1$,
-	but then $I$ contains a unit.
+	but then $I$ contains $\pm1$, which it does not.
 \end{example}
 A ring with the property that all its ideals
 are principal is called a \vocab{principal ideal ring}.
@@ -506,7 +618,7 @@ and tell you what the additional condition is in the next chapter.
 
 \begin{example}
 	[Examples of PID's]
-	As just said, for now you should just verify
+	To reiterate, for now you should just verify
 	that these are principal ideal rings,
 	even though we are using the word PID.
 	\begin{enumerate}[(a)]
@@ -599,7 +711,8 @@ left it as a problem at the end of this chapter.
 
 Noetherian rings really shine in algebraic geometry,
 and it's a bit hard for me to motivate them right now,
-other than to just say ``almost all rings you'll ever care about are Noetherian''.
+other than to say
+``most rings you'll encounter are Noetherian''.
 Please bear with me!
 
 \section{\problemhead}

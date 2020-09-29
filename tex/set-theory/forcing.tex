@@ -356,7 +356,7 @@ V_2 = \left\{ \varnothing, \left\{ \varnothing \right\} \right\}. \]
 		\end{cases}
 	\]
 	In particular, remembering that $G$ is nonempty we see that
-	\[ \left\{ \tau^G \mid \tau \in \Name_2 \right\} = V_2^M. \]
+	\[ \left\{ \tau^G \mid \tau \in \Name_2 \right\} = V_2. \]
 	In fact, this holds for any natural number $n$, not just $2$.
 \end{example}
 So, $M[G]$ and $M$ agree on finite sets.
@@ -378,10 +378,10 @@ Basically, $\check x$ is just a copy of $x$ where we add check marks and tag eve
 \end{ques}
 
 However, we'd also like to cause $G$ to be in $M[G]$.
-In fact, we can write down the name exactly:
-\[ \dot G = \left\{ \left<\check p, p\right> \mid p \in \Po \right\}. \]
+In fact, we can write down the name exactly: we define
+\[ \dot \Po \defeq \left\{ \left<\check p, p\right> \mid p \in \Po \right\}. \]
 \begin{ques}
-	Show that $(\dot G)^G = G$.
+	Show that $(\dot \Po)^G = G$.
 \end{ques}
 \begin{ques}
 	Verify that $M[G]$ is transitive:
@@ -576,8 +576,8 @@ From this we get:
 	By the contrapositive of the previous lemma,
 	$\{q \mid q \Vdash \varphi\}$ is not dense below $p$,
 	meaning for some $\ol p \le p$, every $q \le \ol p$ gives $q \not\Vdash \varphi$.
-	By the definition of $p \vDash \neg\varphi$,
-	we have $\ol p \vDash \neg\varphi$.
+	By the definition of $p \Vdash \neg\varphi$,
+	we have $\ol p \Vdash \neg\varphi$.
 \end{proof}
 And this gives the converse: the $M$-generic $G$ has to hit some condition
 that passes judgment, one way or the other.

@@ -12,7 +12,7 @@ for instance, this will let us show in some cases that the class group must be t
 Astonishingly, the proof will use Minkowski's theorem, a result from geometry.
 
 \section{The class group}
-\prototype{PID's have trivial class group}
+\prototype{PID's have trivial class group.}
 Let $K$ be a number field,
 and let $J_K$ denote the multiplicative group of fractional ideals of $\OO_K$.
 Let $P_K$ denote the multiplicative group of \vocab{principal fractional ideals}:
@@ -48,7 +48,8 @@ The key insight now is that you might think of this as a \emph{lattice}:
 geometrically, we want to think about this the same way we think about $\ZZ^2$.
 
 Perversely, we might try to embed this into $\QQ^2$ by sending $a+b\sqrt 2$ to $(a, b)$.
-But this is a little stupid, since we're rudely making $K$, which somehow lives inside $\QQ$ and is
+But this is a little stupid, since we're rudely making $K$,
+which somehow lives inside $\RR$ and is
 ``one-dimensional'' in that sense, into a two-dimensional space.
 It also depends on a choice of basis, which we don't like.
 A better way is to think about the fact that there are two embeddings
@@ -494,15 +495,25 @@ We can now put everything we have together to obtain the great Minkowski bound.
 \begin{proof}
 	This is a matter of putting all our ingredients together.
 	Let's see what things we've defined already:
-	\begin{diagram}
-		K & \rInj^\iota & \RR^{r_1} \times \CC^{r_2} & \rTo^\tau & \RR^n & \\
-		&& \text{box } S & \rMapsto & \tau\im(S)
-		& \quad\text{with volume } 2^{r_1} \left( \frac\pi2 \right)^{r_2} \frac{M^n}{n!} \\
-		\OO_K && \rMapsto && \text{Lattice } L
-		& \quad\text{with mesh } 2^{-r_2} \sqrt{\left\lvert \Delta_K \right\rvert} \\
-		\ka && \rMapsto && \text{Lattice } L_\ka
-		& \quad\text{with mesh } 2^{-r_2} \sqrt{\left\lvert \Delta_K \right\rvert} \Norm(\ka)
-	\end{diagram}
+	\begin{center}
+	\begin{tikzcd}
+		K \ar[r, "\iota", hook]
+			& \RR^{r_1} \times \CC^{r_2} \ar[r, "\tau"]
+			& \RR^n \\
+		& \text{box } S \ar[r, mapsto]
+			& \tau\im(S)
+			& \quad\text{with volume }
+			2^{r_1} \left( \frac\pi2 \right)^{r_2} \frac{M^n}{n!} \\
+		\OO_K \ar[rr, mapsto]
+			&& \text{Lattice } L
+			& \quad\text{with mesh }
+			2^{-r_2} \sqrt{\left\lvert \Delta_K \right\rvert} \\
+		\ka \ar[rr, mapsto]
+			&& \text{Lattice } L_\ka
+			& \quad\text{with mesh }
+			2^{-r_2} \sqrt{\left\lvert \Delta_K \right\rvert} \Norm(\ka)
+	\end{tikzcd}
+	\end{center}
 	Pick a value of $M$ such that the mesh of $L_\ka$
 	equals $2^{-n}$ of the volume of the box.
 	Then Minkowski's theorem gives that some $0 \neq \alpha \in \ka$ lands inside the box ---
@@ -763,7 +774,8 @@ From this we deduce \[ \Cl_K \cong \Zc 4. \qedhere \]
 \section\problemhead
 \begin{problem}
 	Show that $K = \QQ(\sqrt{-163})$ has trivial class group,
-	and hence $\OO_K = \ZZ[\sqrt{-163}]$ is a UFD.\footnote{In fact,
+	and hence $\OO_K = \ZZ\left[ \frac{1+\sqrt{-163}}{2} \right]$
+	is a UFD.\footnote{In fact,
 		$n = 163$ is the largest number
 		for which $\QQ(\sqrt{-n})$ has trivial class group.
 		The complete list is $1, 2, 3, 7, 11, 19, 43, 67, 163$,
@@ -818,7 +830,7 @@ From this we deduce \[ \Cl_K \cong \Zc 4. \qedhere \]
 
 
 \begin{problem}
-	[Korea 2014]
+	[Korea national olympiad 2014]
 	Let $p$ be an odd prime and $k$ a positive integer such that $p \mid k^2+5$.
 	Prove that there exist positive integers $m$, $n$ such that $p^2 = m^2+5n^2$.
 	\begin{hint}
@@ -832,7 +844,7 @@ From this we deduce \[ \Cl_K \cong \Zc 4. \qedhere \]
 		For $p > 5$ the prime $p$ does not ramify and we have $\kp_1 \neq \kp_2$, since $\Delta_K = 20$.
 
 		Then $(p^2) = \kp_1^2 \cdot \kp_2^2$. Because the class group has order two,
-		both ideals on the right hand side are principal, and because $\kp_1 \neq \kp_2$ they are distinct.
+		both $\kp_1^2$ and $\kp_2^2$ are principal, and because $\kp_1 \neq \kp_2$ they are distinct.
 		Thus $p^2$ is a nontrivial product of two elements of $\OO_K$; from this we can extract the desired factorization.
 	\end{sol}
 \end{problem}
